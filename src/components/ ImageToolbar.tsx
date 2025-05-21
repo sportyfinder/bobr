@@ -7,7 +7,7 @@ export const ImageToolbar = ({
     nodeRect: { top: number; left: number };
     img: Img;
 }) => {
-    const { patch } = useSlide();
+    const { patch, remove } = useSlide();
 
     const replaceImage = () => {
         const input = document.createElement('input');
@@ -28,6 +28,8 @@ export const ImageToolbar = ({
                 top: nodeRect.top - 40,
                 left: nodeRect.left,
                 padding: 4,
+                display: 'flex',
+                gap: 4,
                 background: '#fff',
                 border: '1px solid #ccc',
                 borderRadius: 4,
@@ -35,6 +37,7 @@ export const ImageToolbar = ({
             }}
         >
             <button onClick={replaceImage}>↻ Заменить</button>
+            <button onClick={() => remove(img.id)}>🗑</button>
         </div>
     );
 };
